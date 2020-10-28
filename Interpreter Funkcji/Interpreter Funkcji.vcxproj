@@ -84,8 +84,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -151,7 +150,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Addition.cpp" />
+    <ClCompile Include="Constant.cpp" />
+    <ClCompile Include="Division.cpp" />
+    <ClCompile Include="Exponential.cpp" />
+    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Interpreter Funkcji.cpp" />
+    <ClCompile Include="Linear.cpp" />
+    <ClCompile Include="Multiplication.cpp" />
+    <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="Subtraction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Addition.h" />
+    <ClInclude Include="Constant.h" />
+    <ClInclude Include="Division.h" />
+    <ClInclude Include="Exponential.h" />
+    <ClInclude Include="Function.h" />
+    <ClInclude Include="Linear.h" />
+    <ClInclude Include="Multiplication.h" />
+    <ClInclude Include="Parameter.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Subtraction.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Interpreter Funkcji.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,8 +1,8 @@
 #pragma once
-#include "Function.h"
+#include "Element.h"
 namespace Structure {
 	class Constant :
-		public Function
+		public Element
 	{
 	public:
 		double value;

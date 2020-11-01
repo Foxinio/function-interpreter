@@ -1,15 +1,15 @@
 #pragma once
-#include "Function.h"
+#include "Element.h"
 #include <cmath>
 namespace Structure {
 	class Exponential :
-		public Function
+		public Element
 	{
 	public:
-		Function base;
-		Function power;
+		Element base;
+		Element power;
 
-		Exponential(Function base, Function power) {
+		Exponential(Element base, Element power) {
 			this->base = base;
 			this->power = power;
 		}

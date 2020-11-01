@@ -166,7 +166,7 @@
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Division.h" />
     <ClInclude Include="Exponential.h" />
-    <ClInclude Include="Function.h" />
+    <ClInclude Include="Element.h" />
     <ClInclude Include="Linear.h" />
     <ClInclude Include="Multiplication.h" />
     <ClInclude Include="Parameter.h" />

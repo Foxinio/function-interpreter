@@ -1,6 +1,6 @@
 #pragma once
 #include <memory>
-#include "Function.h"
+#include "Element.h"
 namespace Structure {
 	struct Variable{
 		char symbol;
@@ -13,7 +13,7 @@ namespace Structure {
 	};
 
 	class Parameter :
-		public Function
+		public Element
 	{
 	public:
 		std::shared_ptr<Variable> variable_ptr;

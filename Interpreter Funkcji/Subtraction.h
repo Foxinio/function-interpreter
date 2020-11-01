@@ -1,14 +1,14 @@
 #pragma once
-#include "Function.h"
+#include "Element.h"
 namespace Structure {
 	class Subtraction :
-		public Function
+		public Element
 	{
 	public:
-		Function left;
-		Function right;
+		Element left;
+		Element right;
 
-		Subtraction(Function left, Function right) {
+		Subtraction(Element left, Element right) {
 			this->left = left;
 			this->right = right;
 		}

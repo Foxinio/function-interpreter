@@ -1,8 +1,8 @@
 #pragma once
-#include "Function.h"
+#include "Element.h"
 namespace Structure {
 	class Linear :
-		public Function
+		public Element
 	{
 	public:
 		Linear() {}

@@ -13,36 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Element Headers">
+      <UniqueIdentifier>{760ab456-b809-414f-b5fc-d6ed0de58e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Element Source Code">
+      <UniqueIdentifier>{c25e7db4-5559-4b2a-8695-a51c2b7c16dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Interpreter Funkcji.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Function.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Addition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Multiplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Linear.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Subtraction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Division.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Exponential.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Constant.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Division.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Exponential.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Element.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Linear.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplication.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Parameter.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Subtraction.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="StringInterpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -51,30 +63,36 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Addition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Multiplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Linear.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Subtraction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Division.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Exponential.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Constant.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parameter.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Division.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Exponential.h">
+      <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Element.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Linear.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplication.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parameter.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Subtraction.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StringInterpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

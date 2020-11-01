@@ -154,11 +154,13 @@
     <ClCompile Include="Constant.cpp" />
     <ClCompile Include="Division.cpp" />
     <ClCompile Include="Exponential.cpp" />
+    <ClCompile Include="Element.cpp" />
     <ClCompile Include="Function.cpp" />
     <ClCompile Include="Interpreter Funkcji.cpp" />
     <ClCompile Include="Linear.cpp" />
     <ClCompile Include="Multiplication.cpp" />
     <ClCompile Include="Parameter.cpp" />
+    <ClCompile Include="StringInterpreter.cpp" />
     <ClCompile Include="Subtraction.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,10 +169,12 @@
     <ClInclude Include="Division.h" />
     <ClInclude Include="Exponential.h" />
     <ClInclude Include="Element.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="Linear.h" />
     <ClInclude Include="Multiplication.h" />
     <ClInclude Include="Parameter.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="StringInterpreter.h" />
     <ClInclude Include="Subtraction.h" />
   </ItemGroup>
   <ItemGroup>

@@ -19,86 +19,151 @@
     <Filter Include="Source Files\Element Source Code">
       <UniqueIdentifier>{c25e7db4-5559-4b2a-8695-a51c2b7c16dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parsing Headers">
+      <UniqueIdentifier>{6cdb8d65-802e-4176-b3bd-071d1cff4ff7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parsing Source Code">
+      <UniqueIdentifier>{d1cb5735-8007-4d65-b7a9-24e4109aabf6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Interpreter Funkcji.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Addition.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Constant.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Division.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Exponential.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Element.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Linear.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Multiplication.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Parameter.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Subtraction.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="StringInterpreter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Function.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="base_call_exception.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Addition.h">
+    <ClInclude Include="Structure\Addition.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Constant.h">
+    <ClInclude Include="Structure\BinaryOperator.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Division.h">
+    <ClInclude Include="Structure\Constant.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Exponential.h">
+    <ClInclude Include="Structure\Division.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Element.h">
+    <ClInclude Include="Structure\Element.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Linear.h">
+    <ClInclude Include="Structure\Element_pch.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Multiplication.h">
+    <ClInclude Include="Structure\Exponential.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parameter.h">
+    <ClInclude Include="Structure\Function.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Subtraction.h">
+    <ClInclude Include="Structure\Linear.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="StringInterpreter.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Structure\Multiplication.h">
+      <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Function.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Structure\Parameter.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\Subtraction.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\UnaryOperator.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\VariablePackage.h">
+      <Filter>Header Files\Element Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\UnvalidatedElementFactory.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\FunctionValidator.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\Splitter.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\StringInterpreter.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\UnvalidatedElement.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\WordParser.h">
+      <Filter>Header Files\Parsing Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\TreeMaker.h">
+      <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Interpreter Funkcji.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ParseDIagram.cd" />
+    <None Include="Parsing\ParseDIagram.cd" />
+    <None Include="Interpreter Funkcji.aps" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="base_call_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpreter Funkcji.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Addition.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\BinaryOperator.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Constant.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Division.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Element.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Exponential.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Function.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Parameter.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Linear.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Multiplication.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Subtraction.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\UnaryOperator.cpp">
+      <Filter>Source Files\Element Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\WordParser.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\UnvalidatedElementFactory.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\FunctionValidator.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\Splitter.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\StringInterpreter.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\UnvalidatedElement.cpp">
+      <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

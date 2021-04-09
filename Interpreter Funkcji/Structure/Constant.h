@@ -11,7 +11,7 @@ namespace Structure {
 			this->value = value;
 		}
 
-		double operator()(double x) {
+		double evaluate(VariablePackage package) override {
 			return value;
 		}
 

@@ -1,10 +1,14 @@
 #pragma once
 #include <string>
+#include <memory>
+
+#include "VariablePackage.h"
+
 namespace Structure {
 	class Element
 	{
 	public:
-		double virtual operator()(double x);
+		double		virtual evaluate(VariablePackage package);
 		std::string virtual to_string();
 	};
 }

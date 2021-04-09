@@ -8,4 +8,4 @@ Defining custom many-argument funcitons.
 Vector and matrisies algebra.
 
 ## Context-free grammar used
-$/langle$Expr$/rangle\;\to/langle$Expr$/rangle/langle$BinOp$/rangle$/langle$Expr$/rangle
+$\langle$Expr$\rangle\;\to\langle$Expr$\rangle\langle$BinOp$\rangle$$\langle$Expr$\rangle$

@@ -103,6 +103,7 @@
     <None Include="ParseDIagram.cd" />
     <None Include="Parsing\ParseDIagram.cd" />
     <None Include="Interpreter Funkcji.aps" />
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base_call_exception.cpp">

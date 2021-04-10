@@ -205,6 +205,9 @@
     <ClCompile Include="Structure\Subtraction.cpp" />
     <ClCompile Include="Structure\UnaryOperator.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Context-free grammar.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

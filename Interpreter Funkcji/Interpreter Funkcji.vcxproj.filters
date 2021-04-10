@@ -167,4 +167,7 @@
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Context-free grammar.txt" />
+  </ItemGroup>
 </Project>

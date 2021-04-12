@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -151,62 +151,67 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="base_call_exception.h" />
+    <ClInclude Include="Parsing\Parsing.h" />
+    <ClInclude Include="Structure\BinaryOperators\BinaryOperator_pch.h" />
+    <ClInclude Include="Structure\Functions\Function_pch.h" />
+    <ClInclude Include="Structure\Functions\Log.h" />
+    <ClInclude Include="Structure\UnaryOperators\Cos.h" />
     <ClInclude Include="Parsing\TreeMaker.h" />
-    <ClInclude Include="Parsing\UnvalidatedElementFactory.h" />
+    <ClInclude Include="Parsing\ValidatedElementFactory.h" />
     <ClInclude Include="Parsing\FunctionValidator.h" />
-    <ClInclude Include="Parsing\Splitter.h" />
     <ClInclude Include="Parsing\StringInterpreter.h" />
-    <ClInclude Include="Parsing\UnvalidatedElement.h" />
-    <ClInclude Include="Parsing\WordParser.h" />
-    <ClInclude Include="Structure\Addition.h" />
-    <ClInclude Include="Structure\BinaryOperator.h" />
+    <ClInclude Include="Parsing\ValidatedElement.h" />
+    <ClInclude Include="Structure\UnaryOperators\Sin.h" />
+    <ClInclude Include="Structure\BinaryOperators\Addition.h" />
+    <ClInclude Include="Structure\BinaryOperators\BinaryOperator.h" />
     <ClInclude Include="Structure\Constant.h" />
-    <ClInclude Include="Structure\Division.h" />
+    <ClInclude Include="Structure\BinaryOperators\Division.h" />
     <ClInclude Include="Structure\Element.h" />
     <ClInclude Include="Structure\Element_pch.h" />
-    <ClInclude Include="Structure\Exponential.h" />
-    <ClInclude Include="Structure\Function.h" />
+    <ClInclude Include="Structure\BinaryOperators\Exponential.h" />
+    <ClInclude Include="Structure\Functions\Function.h" />
     <ClInclude Include="Structure\Linear.h" />
-    <ClInclude Include="Structure\Multiplication.h" />
+    <ClInclude Include="Structure\BinaryOperators\Multiplication.h" />
     <ClInclude Include="Structure\Parameter.h" />
-    <ClInclude Include="Structure\Subtraction.h" />
-    <ClInclude Include="Structure\UnaryOperator.h" />
+    <ClInclude Include="Structure\BinaryOperators\Subtraction.h" />
+    <ClInclude Include="Structure\UnaryOperators\UnaryOperator.h" />
+    <ClInclude Include="Structure\UnaryOperators\UnaryOperator_pch.h" />
     <ClInclude Include="Structure\VariablePackage.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Interpreter Funkcji.rc" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\README.md" />
-    <None Include="Interpreter Funkcji.aps" />
-    <None Include="ParseDIagram.cd" />
-    <None Include="Parsing\ParseDIagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base_call_exception.cpp" />
-    <ClCompile Include="Interpreter Funkcji.cpp" />
-    <ClCompile Include="Parsing\UnvalidatedElementFactory.cpp" />
+    <ClCompile Include="Parsing\makeTree.cpp" />
+    <ClCompile Include="Parsing\Parse.cpp" />
+    <ClCompile Include="Parsing\Validate.cpp" />
+    <ClCompile Include="Structure\Functions\Log.cpp" />
+    <ClCompile Include="Structure\UnaryOperators\Cos.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Parsing\ValidatedElementFactory.cpp" />
     <ClCompile Include="Parsing\FunctionValidator.cpp" />
     <ClCompile Include="Parsing\Splitter.cpp" />
     <ClCompile Include="Parsing\StringInterpreter.cpp" />
-    <ClCompile Include="Parsing\UnvalidatedElement.cpp" />
+    <ClCompile Include="Parsing\ValidatedElement.cpp" />
     <ClCompile Include="Parsing\WordParser.cpp" />
-    <ClCompile Include="Structure\Addition.cpp" />
-    <ClCompile Include="Structure\BinaryOperator.cpp" />
+    <ClCompile Include="Structure\UnaryOperators\Sin.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\Addition.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\BinaryOperator.cpp" />
     <ClCompile Include="Structure\Constant.cpp" />
-    <ClCompile Include="Structure\Division.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\Division.cpp" />
     <ClCompile Include="Structure\Element.cpp" />
-    <ClCompile Include="Structure\Exponential.cpp" />
-    <ClCompile Include="Structure\Function.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\Exponential.cpp" />
+    <ClCompile Include="Structure\Functions\Function.cpp" />
     <ClCompile Include="Structure\Linear.cpp" />
-    <ClCompile Include="Structure\Multiplication.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\Multiplication.cpp" />
     <ClCompile Include="Structure\Parameter.cpp" />
-    <ClCompile Include="Structure\Subtraction.cpp" />
-    <ClCompile Include="Structure\UnaryOperator.cpp" />
+    <ClCompile Include="Structure\RegexDistributor.cpp" />
+    <ClCompile Include="Structure\BinaryOperators\Subtraction.cpp" />
+    <ClCompile Include="Structure\UnaryOperators\UnaryOperator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Context-free grammar.txt" />
+    <Text Include="Validating-Expression.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

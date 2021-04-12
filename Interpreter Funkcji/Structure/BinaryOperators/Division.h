@@ -13,7 +13,7 @@ namespace Structure {
 			return first->evaluate(package) / second->evaluate(package);
 		}
 
-		std::string to_string() {
+		std::string to_string() override {
 			return "(" + first->to_string() + "/" + second->to_string() + ")";
 		}
 	};

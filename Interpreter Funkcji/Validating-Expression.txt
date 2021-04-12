@@ -1,0 +1,3 @@
+These points must be met for Expression to be correct:
+-There can't be two BinaryOperators next to each other.
+-Every open Bracket must be closed.

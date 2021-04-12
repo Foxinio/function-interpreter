@@ -3,12 +3,12 @@
 #include <unordered_map>
 #include <vector>
 
-#include "UnvalidatedElement.h"
+#include "ValidatedElement.h"
 
 namespace Parsing {
-	static std::vector<UnvalidatedElement>::iterator ValidateSplitedString(std::vector<UnvalidatedElement> input) {
+	static std::vector<ValidatedElement>::iterator ValidateSplitedString(std::vector<ValidatedElement> input) {
 		auto iter = std::begin(input);
-		if (!iter->validate(UnvalidatedElement::Null, std::next(iter)->getType())) {
+		if (!iter->validate(ValidatedElement::Null, std::next(iter)->getType())) {
 			// tutaj zaimplementowaæ dodawanie obs³u¿enie jakiegoœ problemu (np dodanie mno¿enia pomiêdzy sta³¹ a zmienn¹)
 
 			//throw std::invalid_argument("Incorrect syntax");
@@ -22,7 +22,7 @@ namespace Parsing {
 				return iter;
 			}
 		}
-		if (!iter->validate(std::next(iter)->getType(), UnvalidatedElement::Null)) {
+		if (!iter->validate(std::next(iter)->getType(), ValidatedElement::Null)) {
 			// tutaj zaimplementowaæ dodawanie obs³u¿enie jakiegoœ problemu (np dodanie mno¿enia pomiêdzy sta³¹ a zmienn¹)
 
 			//throw std::invalid_argument("Incorrect syntax");

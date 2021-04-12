@@ -1,27 +1,48 @@
- LExpr -> LExpr LowBinOp LExpr
- LExpr -> HExpr HighBinOp HExpr\
- LExpr -> HExpr
- HExpr -> HExpr HighBinOp HExpr
- HExpr ->'(' LExpr ')'
- HExpr -> UnOp HExpr
- HExpr -> '(' LExpr ')' '^' '(' LExpr ')'
- HExpr -> Num
- HExpr -> Var
+ Start -> LExpr
 
- HExpr -> Fun '(' LExpr ',' Arg ')'
+ # Low Expressions - those with lower priority operators
+ LExpr -> LExpr LowBinOp LExpr
+ LExpr -> HExpr HighBinOp HExpr
+ LExpr -> HExpr
+
+ # High Expressions - those with higher priority operators
+ HExpr -> HExpr HighBinOp HExpr
+ HExpr -> PExpr POp PExpr
+ HExpr -> PExpr
+
+ # Power Expression - Expression with power operator
+ PExpr -> PExpr POp PExpr
+ PExpr ->'(' LExpr ')'
+ PExpr -> UnOp PExpr
+ PExpr -> Num
+ PExpr -> VarList
+ PExpr -> FExpr
+
+ # Multi-argument Functions with arguments separated by comma
+ FExpr -> Fun '(' LExpr ',' Arg ')'
  Arg -> LExpr ',' Arg
  Arg -> LExpr
 
+ # Variable list
+ VarList -> Var VarList
+ VarList -> UnOp VarList
+ VarList -> FExpr
+ Num -> FNum VarList
+ VarList -> Var
+
+ # List of Variables, Binary Operators and Unary Operators
  Var -> [a-zA-Z]
- LowBinOp -> '+'
+ LowBinOp -> '+' | '-'
  HighBinOp -> '*' | '/'
+ POp -> '^'
  UnOp -> '-' | 'sinh' | 'sech' | 'cosh' | 'csch' | 'ctgh' | 'tgh' | 'sin' | 'sec' | 'cos' | 'csc' | 'ctg' | 'tg' | 'asin' | 'asec' | 'acos' | 'acsc' | 'actg' | 'atg' | 'ln' | 'exp' | 'sqrt' | 'cbrt' | 'sign' | 'floor' | 'ceil' | 'round' | 'fact' | 'abs'
 
- Num -> NonZero PreDot
- Num -> '0' '.' PostDot
+ # Floating point number
+ Num -> FNum
+ FNum -> NonZero PreDot
+ FNum -> '0' '.' PostDot
  PreDot -> Digt PreDot
- PreDot -> Digt
- PreDot -> Digt '.' Digt PostDot
+ PreDot -> '.' Digt PostDot
  PostDot -> Digt PostDot
  PostDot -> null
  Digt -> '0' | NonZero

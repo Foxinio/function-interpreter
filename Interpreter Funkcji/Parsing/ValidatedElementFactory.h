@@ -1,15 +1,15 @@
 #pragma once
 
-#include "UnvalidatedElement.h"
-#include "WordParser.h"
-#include "../Structure/BinaryOperator.h"
-#include "../Structure/UnaryOperator.h"
+#include "ValidatedElement.h"
+#include "Parsing.h"
+#include "../Structure/BinaryOperators/BinaryOperator.h"
+#include "../Structure/UnaryOperators/UnaryOperator.h"
 
 namespace Parsing {
-	class UnvalidatedElementFactory
+	class ValidatedElementFactory
 	{
 	public:
-		enum UnvalidatedElementType {
+		enum ValidatedElementType {
 			Null,
 			Number,
 			BracketsOpen,
@@ -20,7 +20,7 @@ namespace Parsing {
 			Comma,
 			Word
 		};
-		static UnvalidatedElementType getGroup(std::string input) {
+		static ValidatedElementType getGroup(std::string input) {
 			switch (input[0]) {
 			case '(':
 				return BracketsOpen;
@@ -48,35 +48,35 @@ namespace Parsing {
 			}
 		}
 
-		static std::vector<UnvalidatedElement> getUnvalidatedElementVector(std::vector<std::string> input) {
-			std::vector<UnvalidatedElement> result{};
+		static std::vector<ValidatedElement> getValidatedElementVector(std::vector<std::string> input) {
+			std::vector<ValidatedElement> result{};
 
 			for (auto inputElement : input) {
 				switch (getGroup(inputElement)) {
 				case Number:
-					result.push_back(UnvalidatedNumber(inputElement));
+					result.push_back(ValidatedNumber(inputElement));
 					break;
 				case BracketsOpen:
-					result.push_back(UnvalidatedBracketOpen(inputElement));
+					result.push_back(ValidatedBracketOpen(inputElement));
 					break;
 				case BracketsClose:
-					result.push_back(UnvalidatedBracketClose(inputElement));
+					result.push_back(ValidatedBracketClose(inputElement));
 					break;
 				case UnaryOperator:
-					result.push_back(UnvalidatedUnaryOperator(inputElement));
+					result.push_back(ValidatedUnaryOperator(inputElement));
 					break;
 				case BinaryOperator:
-					result.push_back(UnvalidatedBinaryOperator(inputElement));
+					result.push_back(ValidatedBinaryOperator(inputElement));
 					break;
 				case Equality:
-					result.push_back(UnvalidatedEquality(inputElement));
+					result.push_back(ValidatedEquality(inputElement));
 					break;
 				case Comma:
-					result.push_back(UnvalidatedComma(inputElement));
+					result.push_back(ValidatedComma(inputElement));
 					break;
 				case Word: 
 				{
-					auto toInsert = ParseWord(inputElement);
+					auto toInsert = parseWord(inputElement);
 					result.insert(std::end(result), std::begin(toInsert), std::end(toInsert));
 					break;
 				}

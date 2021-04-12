@@ -27,19 +27,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="base_call_exception.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Structure\Addition.h">
+    <ClInclude Include="Structure\BinaryOperators\Addition.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\BinaryOperator.h">
+    <ClInclude Include="Structure\BinaryOperators\BinaryOperator.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\Constant.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Division.h">
+    <ClInclude Include="Structure\BinaryOperators\Division.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\Element.h">
@@ -48,89 +45,93 @@
     <ClInclude Include="Structure\Element_pch.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Exponential.h">
+    <ClInclude Include="Structure\BinaryOperators\Exponential.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Function.h">
+    <ClInclude Include="Structure\Functions\Function.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\Linear.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Multiplication.h">
+    <ClInclude Include="Structure\BinaryOperators\Multiplication.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\Parameter.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Subtraction.h">
+    <ClInclude Include="Structure\BinaryOperators\Subtraction.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\UnaryOperator.h">
+    <ClInclude Include="Structure\UnaryOperators\UnaryOperator.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\VariablePackage.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parsing\UnvalidatedElementFactory.h">
+    <ClInclude Include="Parsing\ValidatedElementFactory.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
     <ClInclude Include="Parsing\FunctionValidator.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parsing\Splitter.h">
-      <Filter>Header Files\Parsing Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Parsing\StringInterpreter.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parsing\UnvalidatedElement.h">
-      <Filter>Header Files\Parsing Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Parsing\WordParser.h">
+    <ClInclude Include="Parsing\ValidatedElement.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
     <ClInclude Include="Parsing\TreeMaker.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Structure\UnaryOperators\Sin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\UnaryOperators\Cos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\Functions\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parsing\Parsing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\BinaryOperators\BinaryOperator_pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\Functions\Function_pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Structure\UnaryOperators\UnaryOperator_pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Interpreter Funkcji.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ParseDIagram.cd" />
-    <None Include="Parsing\ParseDIagram.cd" />
-    <None Include="Interpreter Funkcji.aps" />
     <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="base_call_exception.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Interpreter Funkcji.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Structure\Addition.cpp">
+    <ClCompile Include="Structure\BinaryOperators\Addition.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\BinaryOperator.cpp">
+    <ClCompile Include="Structure\BinaryOperators\BinaryOperator.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Structure\Constant.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Division.cpp">
+    <ClCompile Include="Structure\BinaryOperators\Division.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Structure\Element.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Exponential.cpp">
+    <ClCompile Include="Structure\BinaryOperators\Exponential.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Function.cpp">
+    <ClCompile Include="Structure\Functions\Function.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Structure\Parameter.cpp">
@@ -139,19 +140,19 @@
     <ClCompile Include="Structure\Linear.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Multiplication.cpp">
+    <ClCompile Include="Structure\BinaryOperators\Multiplication.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Subtraction.cpp">
+    <ClCompile Include="Structure\BinaryOperators\Subtraction.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\UnaryOperator.cpp">
+    <ClCompile Include="Structure\UnaryOperators\UnaryOperator.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Parsing\WordParser.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Parsing\UnvalidatedElementFactory.cpp">
+    <ClCompile Include="Parsing\ValidatedElementFactory.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Parsing\FunctionValidator.cpp">
@@ -163,11 +164,33 @@
     <ClCompile Include="Parsing\StringInterpreter.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Parsing\UnvalidatedElement.cpp">
+    <ClCompile Include="Parsing\ValidatedElement.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\RegexDistributor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\UnaryOperators\Sin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\UnaryOperators\Cos.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Structure\Functions\Log.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\Parse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\makeTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parsing\Validate.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Context-free grammar.txt" />
+    <Text Include="Validating-Expression.txt" />
   </ItemGroup>
 </Project>

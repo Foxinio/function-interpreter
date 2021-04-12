@@ -1,8 +1,9 @@
 #pragma once
 
 #include <numeric>
+#include <regex>
 
-#include "Element.h"
+#include "../Element.h"
 
 
 namespace Structure {
@@ -37,11 +38,13 @@ namespace Structure {
 			return result.substr(0, result.length() - 1);
 		}
 		static bool isBinaryOperator(std::string string) {
-			if (std::find(std::begin(allBinaryOperators), std::end(allBinaryOperators), [string](std::string elem) { return elem[0] == string[0]; })
-				== std::end(allBinaryOperators)) {
-				return false;
-			}
-			return true;
+			using std::string_literals::operator""s;
+			return std::regex_match(string, std::regex("^("s + getRegex() + ")$"));
+			//if (std::find(std::begin(allBinaryOperators), std::end(allBinaryOperators), [string](std::string elem) { return elem[0] == string[0]; })
+			//	== std::end(allBinaryOperators)) {
+			//	return false;
+			//}
+			//return true;
 		}
 
 		static std::int32_t getPriority() {

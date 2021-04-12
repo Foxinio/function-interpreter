@@ -51,9 +51,6 @@
     <ClInclude Include="Structure\Functions\Function.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Structure\Linear.h">
-      <Filter>Header Files\Element Headers</Filter>
-    </ClInclude>
     <ClInclude Include="Structure\BinaryOperators\Multiplication.h">
       <Filter>Header Files\Element Headers</Filter>
     </ClInclude>
@@ -68,9 +65,6 @@
     </ClInclude>
     <ClInclude Include="Structure\VariablePackage.h">
       <Filter>Header Files\Element Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Parsing\ValidatedElementFactory.h">
-      <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
     <ClInclude Include="Parsing\FunctionValidator.h">
       <Filter>Header Files\Parsing Headers</Filter>
@@ -105,6 +99,9 @@
     <ClInclude Include="Structure\UnaryOperators\UnaryOperator_pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Parsing\ValidatingContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
@@ -137,9 +134,6 @@
     <ClCompile Include="Structure\Parameter.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Structure\Linear.cpp">
-      <Filter>Source Files\Element Source Code</Filter>
-    </ClCompile>
     <ClCompile Include="Structure\BinaryOperators\Multiplication.cpp">
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
@@ -150,9 +144,6 @@
       <Filter>Source Files\Element Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Parsing\WordParser.cpp">
-      <Filter>Source Files\Parsing Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Parsing\ValidatedElementFactory.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Parsing\FunctionValidator.cpp">
@@ -166,9 +157,6 @@
     </ClCompile>
     <ClCompile Include="Parsing\ValidatedElement.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
-    </ClCompile>
-    <ClCompile Include="Structure\RegexDistributor.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Structure\UnaryOperators\Sin.cpp">
       <Filter>Source Files</Filter>

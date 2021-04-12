@@ -8,6 +8,14 @@
 #include "Exponential.h"
 
 namespace Structure {
+
+	double BinaryOperator::evaluate(VariablePackage package) {
+		throw std::invalid_argument("Call to base class without further context.");
+	}
+	std::string BinaryOperator::to_string() {
+		throw std::invalid_argument("Call to base class without further context.");
+	}
+
 	const std::vector<std::string> BinaryOperator::allBinaryOperators{
 		"+", "-", "*", "/", "^", "%"
 	};
@@ -20,7 +28,7 @@ namespace Structure {
 			return Multiplication;
 		}
 		else if (input[0] == '^') {
-			return Power;
+			return Exponential;
 		}
 		throw std::invalid_argument("Unknown Operation");
 	}

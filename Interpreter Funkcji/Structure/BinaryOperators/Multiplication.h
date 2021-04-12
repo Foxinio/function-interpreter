@@ -5,9 +5,10 @@ namespace Structure {
 		public BinaryOperator
 	{
 	public:
+		constexpr static std::int32_t priority = BinaryOperator::Multiplication;
 
 		Multiplication(Element first, Element second) :
-			BinaryOperator(first, second, BinaryOperator::Multiplication) { }
+			BinaryOperator(first, second) { }
 
 		double evaluate(VariablePackage package) override {
 			return first->evaluate(package) * second->evaluate(package);
@@ -17,6 +18,4 @@ namespace Structure {
 			return "(" + first->to_string() + "*" + second->to_string() + ")";
 		}
 	};
-
-	std::int32_t Multiplication::priority = Multiplication::Priority::Multiplication;
 }

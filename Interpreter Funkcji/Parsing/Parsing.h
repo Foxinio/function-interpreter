@@ -4,6 +4,7 @@
 #include <string>
 
 #include "../Structure/Element.h"
+#include "ValidatedElement.h"
 
 namespace Parsing {
 	/*
@@ -21,7 +22,7 @@ namespace Parsing {
 	 *		fixes if possible 
 	 *		throws exception if not
 	 */
-	std::list<ValidatedElement> validate(std::list<std::string> list);
+	std::list<ValidatingContainer> validate(std::list<std::string> list);
 
 	/*
 	 *	Makes tree representing expression in accordance with rules

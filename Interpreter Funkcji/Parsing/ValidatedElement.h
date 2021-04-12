@@ -1,85 +1,53 @@
 #pragma once
-
-#include <string>
-#include <regex>
 #include <functional>
-#include <iterator>
+#include <regex>
+#include <unordered_map>
 
-#include "../Structure/Functions/Function.h"
+
+#include "ValidatingContainer.h"
 
 namespace Parsing {
 
-	struct ValidatingContainer {
-		std::string content;
-		ValidatedElement::ValidatedElementType type;
-		const ValidatedElement& rules;
-
-		enum class Valid {
-			Null,
-			True,
-			False
-		} valid;
-
-		ValidatingContainer(std::string content, ValidatedElement::ValidatedElementType type, const ValidatedElement& rules) :
-			content(content), type(type), rules(rules), valid(Valid::Null) { }
-
-	};
-
-	struct ValidatedElement {
-		enum ValidatedElementType {
-			Null,
-			Number,
-			BracketsOpen,
-			BracketsClose,
-			UnaryOperator,
-			BinaryOperator,
-			Equality,
-			Comma,
-			Variable,
-			Function
-		};
+	struct ValidationRule {
 
 		using reactionFunctor = std::function<void(std::list<ValidatingContainer>&, std::list<ValidatingContainer>::iterator&)>;
+		using reactionMap = std::unordered_map<ValidatingContainer::Type, reactionFunctor>;
+		using validationFunction = reactionFunctor;
 
 	private:
-		const ValidatedElementType type;
 		const std::regex regex;
-		const std::function<bool(std::list<ValidatingContainer>::iterator&)> isValid;
-		const std::unordered_map<ValidatedElementType, reactionFunctor> beforeReaction;
+		const validationFunction isValid;
+		const reactionMap beforeReaction;
 
 
-		ValidatedElement(std::string regex, 
-			std::function<bool(std::list<ValidatingContainer>::iterator&)> isValid,
-			std::unordered_map<ValidatedElementType, reactionFunctor> beforeReaction) :
-			regex(std::regex(regex)), isValid(isValid), beforeReaction(beforeReaction) { }
-		ValidatedElement() = delete;
+		ValidationRule(std::string regex,
+			validationFunction isValid,
+			reactionMap beforeReaction);
+
+		ValidationRule() = delete;
 
 	public:
-		bool validate(std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter) {
 
-			isValid(iter);
 
-			auto previousType = std::prev(iter)->rules.type;
-			if (!std::regex_match(iter->content, regex)) {
-				iter->valid = ValidatingContainer::Valid::False;
-				return false;
-			}
+		bool validate(std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter);
 
-			beforeReaction.at(previousType);
+		static const ValidationRule Number;
 
-			iter->valid = ValidatingContainer::Valid::True;
-			return true;
-		}
+		static const ValidationRule BracketOpen;
 
-		static const ValidatedElement Number;
-		static const ValidatedElement BracketOpen;
-		static const ValidatedElement BracketClose;
-		static const ValidatedElement UnaryOperator;
-		static const ValidatedElement BinaryOperator;
-		static const ValidatedElement Equality;
-		static const ValidatedElement Comma;
-		static const ValidatedElement Variable;
-		static const ValidatedElement Function;
+		static const ValidationRule BracketClose;
+
+		static const ValidationRule UnaryOperator;
+
+		static const ValidationRule BinaryOperator;
+
+		static const ValidationRule Equality;
+
+		static const ValidationRule Comma;
+
+		static const ValidationRule Variable;
+
+		static const ValidationRule Function;
 
 		const auto& getBaseRegex() {
 			return regex;
@@ -88,310 +56,281 @@ namespace Parsing {
 			return beforeReaction;
 		}
 
-		static reactionFunctor throwInvalidArgument(std::string message) {
-			return [message](std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter) {
-				throw std::invalid_argument(message);
-			};
-		}
-		static reactionFunctor insertBefore(ValidatingContainer toInsert) {
-			return [toInsert](std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter) {
-				container.insert(iter, toInsert);
-			};
-		}
-		static reactionFunctor insertAfter(ValidatingContainer toInsert) {
-			return [toInsert](std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter) {
-				container.insert(std::next(iter), toInsert);
-			};
-		}
-		static void doNothing(std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter) { }
+		static reactionFunctor throwInvalidArgument(std::string message);
+		static reactionFunctor insertBefore(ValidatingContainer toInsert);
+		static reactionFunctor insertAfter(ValidatingContainer toInsert);
+		static void doNothing(std::list<ValidatingContainer>& container, std::list<ValidatingContainer>::iterator iter);
 	};
 
-	const ValidatedElement Number = ValidatedElement(
-		"^\\-?[[:digit:]]+)\.[[:digit:]]+)?$" ,
-	ValidatedElement::doNothing, 
-	std::unordered_map<ValidatedElement::ValidatedElementType, ValidatedElement::reactionFunctor>{
-
-		{ValidatedElement::ValidatedElementType::Number,			
-			ValidatedElement::throwInvalidArgument("Invalid Syntax")},
-
-		{ValidatedElement::ValidatedElementType::BracketsOpen,	
-			ValidatedElement::doNothing},
-
-		{ValidatedElement::ValidatedElementType::BracketsClose,	
-			ValidatedElement::insertBefore(ValidatingContainer("*", 
-																				ValidatedElement::ValidatedElementType::BinaryOperator, 
-																				ValidatedElement::BinaryOperator))}
-		
-	});
 
 
 	// TODO Uzupelniæ vectory Prohibited before i Prohibited after i regex
-	struct ValidatedNumber : 
-		public ValidatedElement {
-
-		ValidatedNumber(std::string content) :
-			ValidatedElement(content, Number, "^\\-?[[:digit:]]+)\.[[:digit:]]+)?$", {
-				//	Prohibited before Number
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-				) { }
-	private:
-
-		static ValidatedNumber singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-	
-
-	struct ValidatedBracketOpen :
-		public ValidatedElement {
-
-		ValidatedBracketOpen(std::string content) :
-			ValidatedElement(content, BracketsOpen, "^($", {
-			//	Prohibited before Number
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedBracketOpen singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedBracketClose :
-		public ValidatedElement {
-
-		ValidatedBracketClose(std::string content) :
-			ValidatedElement(content, BracketsClose, "^)$", {
-			//	Prohibited before Number
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedBracketClose singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedUnaryOperator :
-		public ValidatedElement {
-
-		ValidatedUnaryOperator(std::string content) :
-			ValidatedElement(content, UnaryOperator, "", {
-			//	Prohibited before Number
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedUnaryOperator singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedBinaryOperator :
-		public ValidatedElement {
-
-		ValidatedBinaryOperator(std::string content) :
-			ValidatedElement(content, BinaryOperator, "", {
-			//	Prohibited before 
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedBinaryOperator singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedEquality :
-		public ValidatedElement {
-
-		ValidatedEquality(std::string content) :
-			ValidatedElement(content, Equality, "^[\\<\\>=]=$", {
-			//	Prohibited before 
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedEquality singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedComma :
-		public ValidatedElement {
-
-		ValidatedComma(std::string content) :
-			ValidatedElement(content, Comma, "^,$", {
-			//	Prohibited before 
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedComma singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedVariable :
-		public ValidatedElement {
-
-		ValidatedVariable(std::string content) :
-			ValidatedElement(content, Variable, "^[a-zA-Z]$", {
-			//	Prohibited before 
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedVariable singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
-
-
-	struct ValidatedFunction :
-		public ValidatedElement {
-
-		ValidatedFunction(std::string content) :
-			ValidatedElement(content, Function, Structure::Function<0>::getBaseRegex(), {
-			//	Prohibited before 
-
-				}
-				//, {
-				////	Prohibited  after Number
-				//
-				//}
-			) { }
-	private:
-
-		static ValidatedFunction singleton;
-
-	public:
-		static const auto& getRegex() {
-			return singleton.getBaseRegex();
-		}
-		//static const auto& getAfterProhibited() {
-		//	return singleton.getBaseAfterProhibited();
-		//}
-		static const auto& getBeforeProhibited() {
-			return singleton.getBaseBeforeProhibited();
-		}
-	};
+	//struct ValidatedNumber : 
+	//	public ValidationRule {
+	//
+	//	ValidatedNumber(std::string content) :
+	//		ValidationRule(content, Number, "^\\-?[[:digit:]]+)\.[[:digit:]]+)?$", {
+	//			//	Prohibited before Number
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//			) { }
+	//private:
+	//
+	//	static ValidatedNumber singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedBracketOpen :
+	//	public ValidationRule {
+	//
+	//	ValidatedBracketOpen(std::string content) :
+	//		ValidationRule(content, BracketsOpen, "^($", {
+	//		//	Prohibited before Number
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedBracketOpen singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedBracketClose :
+	//	public ValidationRule {
+	//
+	//	ValidatedBracketClose(std::string content) :
+	//		ValidationRule(content, BracketsClose, "^)$", {
+	//		//	Prohibited before Number
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedBracketClose singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedUnaryOperator :
+	//	public ValidationRule {
+	//
+	//	ValidatedUnaryOperator(std::string content) :
+	//		ValidationRule(content, UnaryOperator, "", {
+	//		//	Prohibited before Number
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedUnaryOperator singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//	
+	//struct ValidatedBinaryOperator :
+	//	public ValidationRule {
+	//
+	//	ValidatedBinaryOperator(std::string content) :
+	//		ValidationRule(content, BinaryOperator, "", {
+	//		//	Prohibited before 
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedBinaryOperator singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedEquality :
+	//	public ValidationRule {
+	//
+	//	ValidatedEquality(std::string content) :
+	//		ValidationRule(content, Equality, "^[\\<\\>=]=$", {
+	//		//	Prohibited before 
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedEquality singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedComma :
+	//	public ValidationRule {
+	//
+	//	ValidatedComma(std::string content) :
+	//		ValidationRule(content, Comma, "^,$", {
+	//		//	Prohibited before 
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedComma singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedVariable :
+	//	public ValidationRule {
+	//
+	//	ValidatedVariable(std::string content) :
+	//		ValidationRule(content, Variable, "^[a-zA-Z]$", {
+	//		//	Prohibited before 
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedVariable singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
+	//
+	//
+	//struct ValidatedFunction :
+	//	public ValidationRule {
+	//
+	//	ValidatedFunction(std::string content) :
+	//		ValidationRule(content, Function, Structure::Function<0>::getBaseRegex(), {
+	//		//	Prohibited before 
+	//
+	//			}
+	//			//, {
+	//			////	Prohibited  after Number
+	//			//
+	//			//}
+	//		) { }
+	//private:
+	//
+	//	static ValidatedFunction singleton;
+	//
+	//public:
+	//	static const auto& getRegex() {
+	//		return singleton.getBaseRegex();
+	//	}
+	//	//static const auto& getAfterProhibited() {
+	//	//	return singleton.getBaseAfterProhibited();
+	//	//}
+	//	static const auto& getBeforeProhibited() {
+	//		return singleton.getBaseBeforeProhibited();
+	//	}
+	//};
 }

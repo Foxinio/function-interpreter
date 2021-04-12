@@ -152,12 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Parsing\Parsing.h" />
+    <ClInclude Include="Parsing\ValidatingContainer.h" />
     <ClInclude Include="Structure\BinaryOperators\BinaryOperator_pch.h" />
     <ClInclude Include="Structure\Functions\Function_pch.h" />
     <ClInclude Include="Structure\Functions\Log.h" />
     <ClInclude Include="Structure\UnaryOperators\Cos.h" />
     <ClInclude Include="Parsing\TreeMaker.h" />
-    <ClInclude Include="Parsing\ValidatedElementFactory.h" />
     <ClInclude Include="Parsing\FunctionValidator.h" />
     <ClInclude Include="Parsing\StringInterpreter.h" />
     <ClInclude Include="Parsing\ValidatedElement.h" />
@@ -170,7 +170,6 @@
     <ClInclude Include="Structure\Element_pch.h" />
     <ClInclude Include="Structure\BinaryOperators\Exponential.h" />
     <ClInclude Include="Structure\Functions\Function.h" />
-    <ClInclude Include="Structure\Linear.h" />
     <ClInclude Include="Structure\BinaryOperators\Multiplication.h" />
     <ClInclude Include="Structure\Parameter.h" />
     <ClInclude Include="Structure\BinaryOperators\Subtraction.h" />
@@ -188,7 +187,6 @@
     <ClCompile Include="Structure\Functions\Log.cpp" />
     <ClCompile Include="Structure\UnaryOperators\Cos.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Parsing\ValidatedElementFactory.cpp" />
     <ClCompile Include="Parsing\FunctionValidator.cpp" />
     <ClCompile Include="Parsing\Splitter.cpp" />
     <ClCompile Include="Parsing\StringInterpreter.cpp" />
@@ -202,10 +200,8 @@
     <ClCompile Include="Structure\Element.cpp" />
     <ClCompile Include="Structure\BinaryOperators\Exponential.cpp" />
     <ClCompile Include="Structure\Functions\Function.cpp" />
-    <ClCompile Include="Structure\Linear.cpp" />
     <ClCompile Include="Structure\BinaryOperators\Multiplication.cpp" />
     <ClCompile Include="Structure\Parameter.cpp" />
-    <ClCompile Include="Structure\RegexDistributor.cpp" />
     <ClCompile Include="Structure\BinaryOperators\Subtraction.cpp" />
     <ClCompile Include="Structure\UnaryOperators\UnaryOperator.cpp" />
   </ItemGroup>

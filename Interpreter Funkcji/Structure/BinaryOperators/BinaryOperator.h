@@ -14,7 +14,7 @@ namespace Structure {
 		static std::int32_t priority;
 
 
-		BinaryOperator(Element first, Element second, std::int32_t priority) :
+		BinaryOperator(Element first, Element second) :
 			first(std::make_shared<Element>(first)), 
 			second(std::make_shared<Element>(second)) { }
 
@@ -22,7 +22,7 @@ namespace Structure {
 		enum Priority {
 			Addition = 0,
 			Multiplication = 1,
-			Power = 2,
+			Exponential = 2,
 			Count = 3
 		};
 
@@ -47,9 +47,8 @@ namespace Structure {
 			//return true;
 		}
 
-		static std::int32_t getPriority() {
-			return priority;
-		}
+		virtual double evaluate(VariablePackage package);
+		virtual std::string to_string();
 
 		static std::int32_t priorityFromString(std::string input);
 

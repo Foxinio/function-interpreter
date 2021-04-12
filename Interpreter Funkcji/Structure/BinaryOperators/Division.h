@@ -5,9 +5,10 @@ namespace Structure {
 		public BinaryOperator
 	{
 	public:
+		constexpr static std::int32_t priority = BinaryOperator::Multiplication;
 
 		Division(Element first, Element second) :
-			BinaryOperator(first, second, BinaryOperator::Multiplication) {	}
+			BinaryOperator(first, second) {	}
 
 		double evaluate(VariablePackage package) override {
 			return first->evaluate(package) / second->evaluate(package);

@@ -52,34 +52,14 @@ namespace Structure {
 	public:
 		const static std::unordered_map<std::string, UnaryOperatorType> stringToTypeConverter;
 		static const std::vector<std::string> allUnaryOperators;
-		static std::string getRegex() {
-			std::string result = std::accumulate(
-				std::begin(allUnaryOperators),
-				std::end(allUnaryOperators), 
-				std::string(),
-				[](std::string init, std::string elem) {
-					return init + elem + "|";
-				});
-			return result.substr(0, result.length() - 1);
-		}
 
-		static bool isUnaryOperator(std::string string) {
-			using std::string_literals::operator""s;
-			return std::regex_match(string, std::regex("^("s + getRegex() + ")$"));
-			//if (std::find(std::begin(allUnaryOperators), std::end(allUnaryOperators), [string](std::string elem) { return elem[0] == string[0]; })
-			//	== std::end(allUnaryOperators)) {
-			//	return false;
-			//}
-			//return true;
-		}
+		virtual double evaluate(VariablePackage package);
+		virtual std::string to_string();
 
-		static UnaryOperatorType getType(std::string unaryOperatorName) {
-			if (std::find(allUnaryOperators.begin(), allUnaryOperators.end(), unaryOperatorName) != allUnaryOperators.end()) {
-				throw std::invalid_argument("Unknown " + unaryOperatorName + " UnaryOperator");
-			}
-			return stringToTypeConverter.at(unaryOperatorName);
-		}
-
+		
+		static std::string getRegex();
+		static bool isUnaryOperator(std::string string);
+		static UnaryOperatorType getType(std::string unaryOperatorName);
 		static UnaryOperator getUnaryOperator(std::string unaryOperator, Element arg);
 	};
 

@@ -6,9 +6,10 @@ namespace Structure {
 		public BinaryOperator
 	{
 	public:
+		constexpr static std::int32_t priority = BinaryOperator::Exponential;
 
 		Exponential(Element first, Element second) :
-			BinaryOperator(first, second, BinaryOperator::Power) {	}
+			BinaryOperator(first, second) {	}
 
 		double evaluate(VariablePackage package) override {
 			return std::pow(first->evaluate(package), second->evaluate(package));

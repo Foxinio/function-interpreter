@@ -3,6 +3,39 @@
 
 namespace Structure {
 
+	double UnaryOperator::evaluate(VariablePackage package) {
+		throw std::invalid_argument("Call to base class without further context.");
+	}
+	std::string UnaryOperator::to_string() {
+		throw std::invalid_argument("Call to base class without further context.");
+	}
+
+	std::string UnaryOperator::getRegex() {
+		std::string result = std::accumulate(
+			std::begin(allUnaryOperators),
+			std::end(allUnaryOperators),
+			std::string(),
+			[](std::string init, std::string elem) {
+				return init + elem + "|";
+			});
+		return result.substr(0, result.length() - 1);
+	}
+
+	bool UnaryOperator::isUnaryOperator(std::string string) {
+		using std::string_literals::operator""s;
+		return std::regex_match(string, std::regex("^("s + getRegex() + ")$"));
+	}
+
+	UnaryOperator::UnaryOperatorType UnaryOperator::getType(std::string unaryOperatorName) {
+		if (std::find(allUnaryOperators.begin(), allUnaryOperators.end(), unaryOperatorName) != allUnaryOperators.end()) {
+			using std::string_literals::operator""s;
+			throw std::invalid_argument("Unknown UnaryOperator: "s + unaryOperatorName);
+		}
+		return stringToTypeConverter.at(unaryOperatorName);
+	}
+
+
+
 	const std::vector<std::string> UnaryOperator::allUnaryOperators{
 		"-",
 		"!",

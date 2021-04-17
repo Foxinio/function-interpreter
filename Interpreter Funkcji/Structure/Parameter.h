@@ -7,18 +7,18 @@ namespace Structure {
 		public Element
 	{
 	public:
-		std::shared_ptr<std::string> variableName;
+		std::string variableName;
 
-		Parameter(std::shared_ptr<std::string> variableName) {
+		Parameter(std::string variableName) {
 			this->variableName = variableName;
 		}
 
 		double evaluate(VariablePackage package) override {
-			return package[*variableName];
+			return package[variableName];
 		}
 
 		std::string to_string() {
-			return *variableName;
+			return variableName;
 		}
 	};
 }

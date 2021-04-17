@@ -157,10 +157,9 @@
     <ClInclude Include="Structure\Functions\Function_pch.h" />
     <ClInclude Include="Structure\Functions\Log.h" />
     <ClInclude Include="Structure\UnaryOperators\Cos.h" />
-    <ClInclude Include="Parsing\TreeMaker.h" />
     <ClInclude Include="Parsing\FunctionValidator.h" />
     <ClInclude Include="Parsing\StringInterpreter.h" />
-    <ClInclude Include="Parsing\ValidatedElement.h" />
+    <ClInclude Include="Parsing\ValidationRule.h" />
     <ClInclude Include="Structure\UnaryOperators\Sin.h" />
     <ClInclude Include="Structure\BinaryOperators\Addition.h" />
     <ClInclude Include="Structure\BinaryOperators\BinaryOperator.h" />
@@ -190,7 +189,7 @@
     <ClCompile Include="Parsing\FunctionValidator.cpp" />
     <ClCompile Include="Parsing\Splitter.cpp" />
     <ClCompile Include="Parsing\StringInterpreter.cpp" />
-    <ClCompile Include="Parsing\ValidatedElement.cpp" />
+    <ClCompile Include="Parsing\ValidationRule.cpp" />
     <ClCompile Include="Parsing\WordParser.cpp" />
     <ClCompile Include="Structure\UnaryOperators\Sin.cpp" />
     <ClCompile Include="Structure\BinaryOperators\Addition.cpp" />

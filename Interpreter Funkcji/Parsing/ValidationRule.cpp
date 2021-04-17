@@ -1,7 +1,7 @@
 #include <string>
 #include <iterator>
 
-#include "ValidatedElement.h"
+#include "ValidationRule.h"
 #include "ValidatingContainer.h"
 
 

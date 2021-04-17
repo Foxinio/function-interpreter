@@ -104,7 +104,7 @@ namespace Structure {
 		{"abs",		UnaryOperator::UnaryOperatorType::abs}
 	};
 
-	UnaryOperator UnaryOperator::getUnaryOperator(std::string unaryOperator, Element arg) {
+	UnaryOperator& UnaryOperator::getUnaryOperator(std::string unaryOperator, Element arg) {
 		switch (UnaryOperator::getType(unaryOperator)) {
 		case UnaryOperator::UnaryOperatorType::sin:
 			return Sin(arg);

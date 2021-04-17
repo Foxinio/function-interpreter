@@ -52,7 +52,7 @@ namespace Structure {
 
 		static std::int32_t priorityFromString(std::string input);
 
-		static BinaryOperator getBinaryOperator(std::string binaryOperator, Element first, Element second);
+		static BinaryOperator& getBinaryOperator(std::string binaryOperator, Element first, Element second);
 	};
 
 }

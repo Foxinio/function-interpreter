@@ -60,7 +60,7 @@ namespace Structure {
 		static std::string getRegex();
 		static bool isUnaryOperator(std::string string);
 		static UnaryOperatorType getType(std::string unaryOperatorName);
-		static UnaryOperator getUnaryOperator(std::string unaryOperator, Element arg);
+		static UnaryOperator& getUnaryOperator(std::string unaryOperator, Element arg);
 	};
 
 }

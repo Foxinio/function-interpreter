@@ -4,7 +4,7 @@
 #include <string>
 
 #include "../Structure/Element.h"
-#include "ValidatedElement.h"
+#include "ValidatingContainer.h"
 
 namespace Parsing {
 	/*
@@ -28,7 +28,7 @@ namespace Parsing {
 	 *	Makes tree representing expression in accordance with rules
 	 * 	if expression doesn't match established rules results with undefined behaviour
 	 */
-	Structure::Element makeTree(std::list<std::string>::const_iterator beginIter, std::list<std::string>::const_iterator endIter);
+	Structure::Element& makeTree(std::list<ValidatingContainer>::const_iterator beginIter, std::list<ValidatingContainer>::const_iterator endIter);
 
 	/*
 	 *	Parses string in accordance with established rules,

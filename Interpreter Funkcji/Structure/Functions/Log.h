@@ -4,7 +4,6 @@
 #include "Function.h"
 
 namespace Structure {
-	extern class Function;
 
 	class Log :
 		public Function {

@@ -72,10 +72,7 @@
     <ClInclude Include="Parsing\StringInterpreter.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Parsing\ValidatedElement.h">
-      <Filter>Header Files\Parsing Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Parsing\TreeMaker.h">
+    <ClInclude Include="Parsing\ValidationRule.h">
       <Filter>Header Files\Parsing Headers</Filter>
     </ClInclude>
     <ClInclude Include="Structure\UnaryOperators\Sin.h">
@@ -155,7 +152,7 @@
     <ClCompile Include="Parsing\StringInterpreter.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
-    <ClCompile Include="Parsing\ValidatedElement.cpp">
+    <ClCompile Include="Parsing\ValidationRule.cpp">
       <Filter>Source Files\Parsing Source Code</Filter>
     </ClCompile>
     <ClCompile Include="Structure\UnaryOperators\Sin.cpp">

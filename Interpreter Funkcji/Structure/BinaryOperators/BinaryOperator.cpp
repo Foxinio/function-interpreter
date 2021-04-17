@@ -33,7 +33,7 @@ namespace Structure {
 		throw std::invalid_argument("Unknown Operation");
 	}
 
-	BinaryOperator BinaryOperator::getBinaryOperator(std::string binaryOperator, Element first, Element second) {
+	BinaryOperator& BinaryOperator::getBinaryOperator(std::string binaryOperator, Element first, Element second) {
 		switch (binaryOperator[0]) {
 		case '*':
 			return Structure::Multiplication(first, second);
